@@ -15,7 +15,7 @@ class MapExercise:
         """
 
         def get_rating(movie: dict) -> float:
-            country_count = len(movie["country"].split(","))
+            country_count = movie["country"].count(",") + 1
             return (
                 float(movie["rating_kinopoisk"])
                 if country_count >= 2 and movie["rating_kinopoisk"]
