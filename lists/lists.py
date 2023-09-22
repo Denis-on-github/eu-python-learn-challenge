@@ -12,7 +12,11 @@ class ListExercise:
         if not input_list:
             return []
 
-        max_value = max(input_list)
+        max_value = input_list[0]
+        for x in input_list:
+            if x > max_value:
+                max_value = x
+
         final_list = [max_value if x > 0 else x for x in input_list]
 
         return final_list
