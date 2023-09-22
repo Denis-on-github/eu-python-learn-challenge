@@ -44,14 +44,12 @@ class FlaskExercise:
         """GET /user/<name> - чтение пользователя
         В ответе должен вернуться JSON {"data": "My name is <name>"}. Статус 200"""
 
-        try:
-            users_db[username]
+        user_data = users_db.get(username)
+        if user_data is not None:
             response = {"data": f"My name is {username}"}
-
             return jsonify(response), 200
-        except KeyError:
+        else:
             error_message = {"errors": {"name": f"{username} not exists"}}
-
             return jsonify(error_message), 404
 
     @staticmethod
